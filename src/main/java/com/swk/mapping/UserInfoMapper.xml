@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.swk.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.swk.bean.UserInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="login_id" property="loginId" jdbcType="BIGINT" />
+    <result column="time" property="time" jdbcType="BIGINT" />
+    <result column="reality_name" property="realityName" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="education_id" property="educationId" jdbcType="INTEGER" />
+    <result column="marital_id" property="maritalId" jdbcType="INTEGER" />
+    <result column="house_id" property="houseId" jdbcType="INTEGER" />
+    <result column="recommend_user_id" property="recommendUserId" jdbcType="VARCHAR" />
+    <result column="balance" property="balance" jdbcType="BIGINT" />
+    <result column="freeze" property="freeze" jdbcType="BIGINT" />
+    <result column="ips_acct_no" property="ipsAcctNo" jdbcType="VARCHAR" />
+    <result column="usertype" property="usertype" jdbcType="INTEGER" />
+    <result column="h_street" property="hStreet" jdbcType="VARCHAR" />
+    <result column="h_postcode" property="hPostcode" jdbcType="INTEGER" />
+    <result column="j_street" property="jStreet" jdbcType="VARCHAR" />
+    <result column="j_postcode" property="jPostcode" jdbcType="INTEGER" />
+    <result column="d_id_type" property="dIdType" jdbcType="INTEGER" />
+    <result column="d_child_type" property="dChildType" jdbcType="INTEGER" />
+    <result column="d_h_province_id" property="dHProvinceId" jdbcType="INTEGER" />
+    <result column="d_h_city_id" property="dHCityId" jdbcType="INTEGER" />
+    <result column="d_h_country_id" property="dHCountryId" jdbcType="INTEGER" />
+    <result column="d_j_province_id" property="dJProvinceId" jdbcType="INTEGER" />
+    <result column="d_j_city_id" property="dJCityId" jdbcType="INTEGER" />
+    <result column="d_j_country_id" property="dJCountryId" jdbcType="INTEGER" />
+    <result column="bank_account_id" property="bankAccountId" jdbcType="VARCHAR" />
+    <result column="d_bank_code" property="dBankCode" jdbcType="VARCHAR" />
+    <result column="d_bank_name" property="dBankName" jdbcType="VARCHAR" />
+    <result column="user_bank_name" property="userBankName" jdbcType="VARCHAR" />
+    <result column="max_credit" property="maxCredit" jdbcType="BIGINT" />
+    <result column="d_bank_city_id" property="dBankCityId" jdbcType="INTEGER" />
+    <result column="lock_lose_money" property="lockLoseMoney" jdbcType="TINYINT" />
+    <result column="monthly_pay" property="monthlyPay" jdbcType="BIGINT" />
+    <result column="d_bank_code2" property="dBankCode2" jdbcType="VARCHAR" />
+    <result column="bank_account_id2" property="bankAccountId2" jdbcType="VARCHAR" />
+    <result column="email_status" property="emailStatus" jdbcType="TINYINT" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="userkind" property="userkind" jdbcType="INTEGER" />
+    <result column="platform" property="platform" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, login_id, time, reality_name, mobile, id_number, sex, education_id, marital_id, 
+    house_id, recommend_user_id, balance, freeze, ips_acct_no, usertype, h_street, h_postcode, 
+    j_street, j_postcode, d_id_type, d_child_type, d_h_province_id, d_h_city_id, d_h_country_id, 
+    d_j_province_id, d_j_city_id, d_j_country_id, bank_account_id, d_bank_code, d_bank_name, 
+    user_bank_name, max_credit, d_bank_city_id, lock_lose_money, monthly_pay, d_bank_code2, 
+    bank_account_id2, email_status, email, userkind, platform
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_users_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_users_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.swk.bean.UserInfo" >
+    insert into t_users_info (id, login_id, time, 
+      reality_name, mobile, id_number, 
+      sex, education_id, marital_id, 
+      house_id, recommend_user_id, balance, 
+      freeze, ips_acct_no, usertype, 
+      h_street, h_postcode, j_street, 
+      j_postcode, d_id_type, d_child_type, 
+      d_h_province_id, d_h_city_id, d_h_country_id, 
+      d_j_province_id, d_j_city_id, d_j_country_id, 
+      bank_account_id, d_bank_code, d_bank_name, 
+      user_bank_name, max_credit, d_bank_city_id, 
+      lock_lose_money, monthly_pay, d_bank_code2, 
+      bank_account_id2, email_status, email, 
+      userkind, platform)
+    values (#{id,jdbcType=BIGINT}, #{loginId,jdbcType=BIGINT}, #{time,jdbcType=BIGINT}, 
+      #{realityName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{educationId,jdbcType=INTEGER}, #{maritalId,jdbcType=INTEGER}, 
+      #{houseId,jdbcType=INTEGER}, #{recommendUserId,jdbcType=VARCHAR}, #{balance,jdbcType=BIGINT}, 
+      #{freeze,jdbcType=BIGINT}, #{ipsAcctNo,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}, 
+      #{hStreet,jdbcType=VARCHAR}, #{hPostcode,jdbcType=INTEGER}, #{jStreet,jdbcType=VARCHAR}, 
+      #{jPostcode,jdbcType=INTEGER}, #{dIdType,jdbcType=INTEGER}, #{dChildType,jdbcType=INTEGER}, 
+      #{dHProvinceId,jdbcType=INTEGER}, #{dHCityId,jdbcType=INTEGER}, #{dHCountryId,jdbcType=INTEGER}, 
+      #{dJProvinceId,jdbcType=INTEGER}, #{dJCityId,jdbcType=INTEGER}, #{dJCountryId,jdbcType=INTEGER}, 
+      #{bankAccountId,jdbcType=VARCHAR}, #{dBankCode,jdbcType=VARCHAR}, #{dBankName,jdbcType=VARCHAR}, 
+      #{userBankName,jdbcType=VARCHAR}, #{maxCredit,jdbcType=BIGINT}, #{dBankCityId,jdbcType=INTEGER}, 
+      #{lockLoseMoney,jdbcType=TINYINT}, #{monthlyPay,jdbcType=BIGINT}, #{dBankCode2,jdbcType=VARCHAR}, 
+      #{bankAccountId2,jdbcType=VARCHAR}, #{emailStatus,jdbcType=TINYINT}, #{email,jdbcType=VARCHAR}, 
+      #{userkind,jdbcType=INTEGER}, #{platform,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.swk.bean.UserInfo" >
+    insert into t_users_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginId != null" >
+        login_id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="realityName != null" >
+        reality_name,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="idNumber != null" >
+        id_number,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="educationId != null" >
+        education_id,
+      </if>
+      <if test="maritalId != null" >
+        marital_id,
+      </if>
+      <if test="houseId != null" >
+        house_id,
+      </if>
+      <if test="recommendUserId != null" >
+        recommend_user_id,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="freeze != null" >
+        freeze,
+      </if>
+      <if test="ipsAcctNo != null" >
+        ips_acct_no,
+      </if>
+      <if test="usertype != null" >
+        usertype,
+      </if>
+      <if test="hStreet != null" >
+        h_street,
+      </if>
+      <if test="hPostcode != null" >
+        h_postcode,
+      </if>
+      <if test="jStreet != null" >
+        j_street,
+      </if>
+      <if test="jPostcode != null" >
+        j_postcode,
+      </if>
+      <if test="dIdType != null" >
+        d_id_type,
+      </if>
+      <if test="dChildType != null" >
+        d_child_type,
+      </if>
+      <if test="dHProvinceId != null" >
+        d_h_province_id,
+      </if>
+      <if test="dHCityId != null" >
+        d_h_city_id,
+      </if>
+      <if test="dHCountryId != null" >
+        d_h_country_id,
+      </if>
+      <if test="dJProvinceId != null" >
+        d_j_province_id,
+      </if>
+      <if test="dJCityId != null" >
+        d_j_city_id,
+      </if>
+      <if test="dJCountryId != null" >
+        d_j_country_id,
+      </if>
+      <if test="bankAccountId != null" >
+        bank_account_id,
+      </if>
+      <if test="dBankCode != null" >
+        d_bank_code,
+      </if>
+      <if test="dBankName != null" >
+        d_bank_name,
+      </if>
+      <if test="userBankName != null" >
+        user_bank_name,
+      </if>
+      <if test="maxCredit != null" >
+        max_credit,
+      </if>
+      <if test="dBankCityId != null" >
+        d_bank_city_id,
+      </if>
+      <if test="lockLoseMoney != null" >
+        lock_lose_money,
+      </if>
+      <if test="monthlyPay != null" >
+        monthly_pay,
+      </if>
+      <if test="dBankCode2 != null" >
+        d_bank_code2,
+      </if>
+      <if test="bankAccountId2 != null" >
+        bank_account_id2,
+      </if>
+      <if test="emailStatus != null" >
+        email_status,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="userkind != null" >
+        userkind,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=BIGINT},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=BIGINT},
+      </if>
+      <if test="realityName != null" >
+        #{realityName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="educationId != null" >
+        #{educationId,jdbcType=INTEGER},
+      </if>
+      <if test="maritalId != null" >
+        #{maritalId,jdbcType=INTEGER},
+      </if>
+      <if test="houseId != null" >
+        #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendUserId != null" >
+        #{recommendUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="freeze != null" >
+        #{freeze,jdbcType=BIGINT},
+      </if>
+      <if test="ipsAcctNo != null" >
+        #{ipsAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="hStreet != null" >
+        #{hStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="hPostcode != null" >
+        #{hPostcode,jdbcType=INTEGER},
+      </if>
+      <if test="jStreet != null" >
+        #{jStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="jPostcode != null" >
+        #{jPostcode,jdbcType=INTEGER},
+      </if>
+      <if test="dIdType != null" >
+        #{dIdType,jdbcType=INTEGER},
+      </if>
+      <if test="dChildType != null" >
+        #{dChildType,jdbcType=INTEGER},
+      </if>
+      <if test="dHProvinceId != null" >
+        #{dHProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="dHCityId != null" >
+        #{dHCityId,jdbcType=INTEGER},
+      </if>
+      <if test="dHCountryId != null" >
+        #{dHCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="dJProvinceId != null" >
+        #{dJProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="dJCityId != null" >
+        #{dJCityId,jdbcType=INTEGER},
+      </if>
+      <if test="dJCountryId != null" >
+        #{dJCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="bankAccountId != null" >
+        #{bankAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="dBankCode != null" >
+        #{dBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dBankName != null" >
+        #{dBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="userBankName != null" >
+        #{userBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="maxCredit != null" >
+        #{maxCredit,jdbcType=BIGINT},
+      </if>
+      <if test="dBankCityId != null" >
+        #{dBankCityId,jdbcType=INTEGER},
+      </if>
+      <if test="lockLoseMoney != null" >
+        #{lockLoseMoney,jdbcType=TINYINT},
+      </if>
+      <if test="monthlyPay != null" >
+        #{monthlyPay,jdbcType=BIGINT},
+      </if>
+      <if test="dBankCode2 != null" >
+        #{dBankCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountId2 != null" >
+        #{bankAccountId2,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null" >
+        #{emailStatus,jdbcType=TINYINT},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userkind != null" >
+        #{userkind,jdbcType=INTEGER},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.swk.bean.UserInfo" >
+    update t_users_info
+    <set >
+      <if test="loginId != null" >
+        login_id = #{loginId,jdbcType=BIGINT},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=BIGINT},
+      </if>
+      <if test="realityName != null" >
+        reality_name = #{realityName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="educationId != null" >
+        education_id = #{educationId,jdbcType=INTEGER},
+      </if>
+      <if test="maritalId != null" >
+        marital_id = #{maritalId,jdbcType=INTEGER},
+      </if>
+      <if test="houseId != null" >
+        house_id = #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="recommendUserId != null" >
+        recommend_user_id = #{recommendUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="freeze != null" >
+        freeze = #{freeze,jdbcType=BIGINT},
+      </if>
+      <if test="ipsAcctNo != null" >
+        ips_acct_no = #{ipsAcctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null" >
+        usertype = #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="hStreet != null" >
+        h_street = #{hStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="hPostcode != null" >
+        h_postcode = #{hPostcode,jdbcType=INTEGER},
+      </if>
+      <if test="jStreet != null" >
+        j_street = #{jStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="jPostcode != null" >
+        j_postcode = #{jPostcode,jdbcType=INTEGER},
+      </if>
+      <if test="dIdType != null" >
+        d_id_type = #{dIdType,jdbcType=INTEGER},
+      </if>
+      <if test="dChildType != null" >
+        d_child_type = #{dChildType,jdbcType=INTEGER},
+      </if>
+      <if test="dHProvinceId != null" >
+        d_h_province_id = #{dHProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="dHCityId != null" >
+        d_h_city_id = #{dHCityId,jdbcType=INTEGER},
+      </if>
+      <if test="dHCountryId != null" >
+        d_h_country_id = #{dHCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="dJProvinceId != null" >
+        d_j_province_id = #{dJProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="dJCityId != null" >
+        d_j_city_id = #{dJCityId,jdbcType=INTEGER},
+      </if>
+      <if test="dJCountryId != null" >
+        d_j_country_id = #{dJCountryId,jdbcType=INTEGER},
+      </if>
+      <if test="bankAccountId != null" >
+        bank_account_id = #{bankAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="dBankCode != null" >
+        d_bank_code = #{dBankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dBankName != null" >
+        d_bank_name = #{dBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="userBankName != null" >
+        user_bank_name = #{userBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="maxCredit != null" >
+        max_credit = #{maxCredit,jdbcType=BIGINT},
+      </if>
+      <if test="dBankCityId != null" >
+        d_bank_city_id = #{dBankCityId,jdbcType=INTEGER},
+      </if>
+      <if test="lockLoseMoney != null" >
+        lock_lose_money = #{lockLoseMoney,jdbcType=TINYINT},
+      </if>
+      <if test="monthlyPay != null" >
+        monthly_pay = #{monthlyPay,jdbcType=BIGINT},
+      </if>
+      <if test="dBankCode2 != null" >
+        d_bank_code2 = #{dBankCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountId2 != null" >
+        bank_account_id2 = #{bankAccountId2,jdbcType=VARCHAR},
+      </if>
+      <if test="emailStatus != null" >
+        email_status = #{emailStatus,jdbcType=TINYINT},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userkind != null" >
+        userkind = #{userkind,jdbcType=INTEGER},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.swk.bean.UserInfo" >
+    update t_users_info
+    set login_id = #{loginId,jdbcType=BIGINT},
+      time = #{time,jdbcType=BIGINT},
+      reality_name = #{realityName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      education_id = #{educationId,jdbcType=INTEGER},
+      marital_id = #{maritalId,jdbcType=INTEGER},
+      house_id = #{houseId,jdbcType=INTEGER},
+      recommend_user_id = #{recommendUserId,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=BIGINT},
+      freeze = #{freeze,jdbcType=BIGINT},
+      ips_acct_no = #{ipsAcctNo,jdbcType=VARCHAR},
+      usertype = #{usertype,jdbcType=INTEGER},
+      h_street = #{hStreet,jdbcType=VARCHAR},
+      h_postcode = #{hPostcode,jdbcType=INTEGER},
+      j_street = #{jStreet,jdbcType=VARCHAR},
+      j_postcode = #{jPostcode,jdbcType=INTEGER},
+      d_id_type = #{dIdType,jdbcType=INTEGER},
+      d_child_type = #{dChildType,jdbcType=INTEGER},
+      d_h_province_id = #{dHProvinceId,jdbcType=INTEGER},
+      d_h_city_id = #{dHCityId,jdbcType=INTEGER},
+      d_h_country_id = #{dHCountryId,jdbcType=INTEGER},
+      d_j_province_id = #{dJProvinceId,jdbcType=INTEGER},
+      d_j_city_id = #{dJCityId,jdbcType=INTEGER},
+      d_j_country_id = #{dJCountryId,jdbcType=INTEGER},
+      bank_account_id = #{bankAccountId,jdbcType=VARCHAR},
+      d_bank_code = #{dBankCode,jdbcType=VARCHAR},
+      d_bank_name = #{dBankName,jdbcType=VARCHAR},
+      user_bank_name = #{userBankName,jdbcType=VARCHAR},
+      max_credit = #{maxCredit,jdbcType=BIGINT},
+      d_bank_city_id = #{dBankCityId,jdbcType=INTEGER},
+      lock_lose_money = #{lockLoseMoney,jdbcType=TINYINT},
+      monthly_pay = #{monthlyPay,jdbcType=BIGINT},
+      d_bank_code2 = #{dBankCode2,jdbcType=VARCHAR},
+      bank_account_id2 = #{bankAccountId2,jdbcType=VARCHAR},
+      email_status = #{emailStatus,jdbcType=TINYINT},
+      email = #{email,jdbcType=VARCHAR},
+      userkind = #{userkind,jdbcType=INTEGER},
+      platform = #{platform,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
