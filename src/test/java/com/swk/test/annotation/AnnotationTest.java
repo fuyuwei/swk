@@ -1,11 +1,11 @@
 package com.swk.test.annotation;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.sun.istack.internal.logging.Logger;
 import com.swk.common.annotation.AnnotationChecker;
 import com.swk.common.exception.PostingException;
 import com.swk.request.UserInfoRequest;
