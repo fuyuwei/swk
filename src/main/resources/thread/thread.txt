@@ -1,0 +1,7 @@
+1、实现多线程的两种方式 ThreadListener.java
+	implement Runnable;extends Thread
+2、Timer定时器 ThreadTimer.java
+3、synchronized方法和synchronized(this)互斥，static synchoronized 方法和synchronized(当前对象.class)互斥
+4、线程之间的通信ThreadCommunication.java
+	synchronized,wait,notify的使用
+5、
