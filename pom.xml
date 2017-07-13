@@ -9,7 +9,8 @@
       <spring.version>4.0.2.RELEASE</spring.version>  
       <mybatis.version>3.2.6</mybatis.version>  
       <slf4j.version>1.7.7</slf4j.version>  
-      <log4j.version>1.2.17</log4j.version>  
+      <log4j.version>1.2.17</log4j.version>
+      <redis.version>2.5.2</redis.version>  
   </properties>  
 
   <dependencies>  
@@ -19,7 +20,13 @@
           <version>4.11</version>  
           <!-- 表示开发的时候引入，发布的时候不会加载此包 -->  
           <scope>test</scope>  
-      </dependency>  
+      </dependency> 
+      <dependency>
+    	<groupId>redis.clients</groupId>
+    	<artifactId>jedis</artifactId>
+    	<version>${redis.version}</version>
+	  </dependency>
+       
       <!-- spring核心包 -->  
       <dependency>  
           <groupId>org.springframework</groupId>  
