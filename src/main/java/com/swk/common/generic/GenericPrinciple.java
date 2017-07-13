@@ -34,6 +34,15 @@ public class GenericPrinciple {
 		}
 	}
 	
+	/**
+	 * 自定义泛型,<T> 必须在方法返回值前面，表示定义了一种新的类型，并且必须为对象类型，不能是基本数据类型，例如int,long之类的
+	 * @param t
+	 * @return
+	 */
+	public static <T> T customerGeneric(T t){
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		erasureGeneric();
 	}
