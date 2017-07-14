@@ -7,11 +7,15 @@ import org.springframework.util.StringUtils;
 
 import com.swk.util.PropertiesUtil;
 
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * 初始化redis配置信息
+ * @volatile 使用场景描述：
+ * 用volatile修改JedisPool的Map集合，在多线程环境中，当前现在使用redis连接池时，如果其他线程对redis连接进行修改，例如将连接返回到连接池等
+ * 当前线程池能获取到最新的连接池信息
  * http://www.codeweblog.com/jedis-returnresource%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/
  * @author fuyuwei
  */
@@ -19,7 +23,80 @@ public class RedisConfiguration {
 	
 	private static volatile Map<String,JedisPool> pools;
 	
+	private static volatile JedisPool jedisPool;
+	
 	/**
+	 * 针对默认只有一个redis实例
+	 * @return
+	 */
+	public static Jedis getRedisInstance(){
+		if(jedisPool == null){
+			synchronized(RedisConfiguration.class){
+				if(jedisPool == null){
+					int maxActive = PropertiesUtil.getInt("redis.pool.maxActive", 20);
+					int maxIdle = PropertiesUtil.getInt("redis.pool.maxIdle", 5);
+					JedisPoolConfig config = newJedisConfig(maxActive, maxIdle);
+					String pwd = PropertiesUtil.getString("redis.password", "");
+					String ip = PropertiesUtil.getString("redis.ip", "192.168.1.00");
+					int port = PropertiesUtil.getInt("redis.port", 6379);
+					int timeout = 3000;
+					if(StringUtils.isEmpty(pwd)){
+						jedisPool = new JedisPool(config,ip,port,timeout);
+					}else{
+						jedisPool = new JedisPool(config,ip,port,timeout,pwd);
+					}
+				}
+			}
+		}
+		return jedisPool.getResource();
+	}
+	
+	public static void returnInstance(Jedis jedis,boolean isBrokenConn){
+		if(jedis != null){
+			if(isBrokenConn){
+				jedisPool.returnBrokenResource(jedis);
+			}else{
+				jedisPool.returnResource(jedis);
+			}
+		}
+	}
+	
+	/**
+	 * 针对配置了多个redis实例，根据配置的redis名称初始化redis连接池
+	 * @param cacheName
+	 * @return
+	 */
+	public static Jedis getRedisInstance(String cacheName){
+		initCaches();
+		return pools.get(cacheName).getResource();
+	}
+	
+	public static void returnInstance(String cacheName,Jedis jedis,boolean isBrokenConn){
+		initCaches();
+		if(jedis != null){
+			// 异常情况
+			if(isBrokenConn){
+				pools.get(cacheName).returnBrokenResource(jedis);
+			}
+			else{
+				pools.get(cacheName).returnResource(jedis);
+			}
+		}
+		
+	}
+	public static void initCaches(){
+		// 这里pools用volatile修饰，JVM的happen-before原则
+		if(pools == null){
+			synchronized(RedisConfiguration.class){
+				if(pools == null){
+					initJedisPool();
+				}
+			}
+		}
+	}
+	
+	/**
+	 * 对于有多个redis实例的
 	 * 根据redis配置信息初始化redis连接池
 	 */
 	public static void initJedisPool(){
