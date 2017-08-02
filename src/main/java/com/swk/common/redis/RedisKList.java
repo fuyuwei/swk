@@ -9,5 +9,7 @@ public interface RedisKList<K,V> {
 	public void del(K key);
 	
 	public int size(K key);
+
+	List<V> getPara(String key, Object obj);
 	
 }
