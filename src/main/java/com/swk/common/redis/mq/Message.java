@@ -10,7 +10,6 @@ public class Message implements Serializable{
 	
 	private String content;
 	
-
 	public Message() {
 		super();
 	}

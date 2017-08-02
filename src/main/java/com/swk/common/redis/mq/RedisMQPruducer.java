@@ -9,6 +9,7 @@ import com.swk.common.redis.RedisKJsonListCache;
  * 队列遵循FIFO原则，redis中的lpush(头入)rpop(尾出)或rpush(尾入)lpop(头出)可以满足要求
  * @author fuyuwei
  */
+
 public class RedisMQPruducer {
 
 	public static void sendMessage(String key,String content){
