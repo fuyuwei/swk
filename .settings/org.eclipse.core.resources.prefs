@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/resources/jdbc.properties=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
+encoding//src/main/resources/redis.properties=UTF-8
 encoding//src/main/resources/redis/redis.txt=UTF-8
 encoding//src/main/resources/spring/spring.txt=UTF-8
 encoding//src/main/resources/thread/thread.txt=UTF-8

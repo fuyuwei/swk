@@ -71,11 +71,11 @@ public class RedisConfiguration {
 		return pools.get(cacheName).getResource();
 	}
 	
-	public static void returnInstance(String cacheName,Jedis jedis,boolean isBrokenConn){
+	public static void returnInstance(String cacheName,Jedis jedis,boolean broken){
 		initCaches();
 		if(jedis != null){
 			// 异常情况
-			if(isBrokenConn){
+			if(broken){
 				pools.get(cacheName).returnBrokenResource(jedis);
 			}
 			else{

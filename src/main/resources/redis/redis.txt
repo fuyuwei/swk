@@ -3,6 +3,12 @@
 	tar xzf redis-3.2.9.tar.gz
 	cd redis-3.2.9
 	make
-2、
+2、com.swk.common.redis 
+	redis基本操作工具类
+3、com.swk.common.redis.mq
+	利用redis实现简单mq示例
+4、com.swk.common.ratelimit
+	利用redis、lua实现应用、接口限流
+
 
 
