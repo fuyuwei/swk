@@ -13,8 +13,8 @@ import io.netty.handler.codec.string.StringEncoder;
  */
 public class NettyClient {
     static final String HOST = "127.0.0.1";
-    static final int PORT = 8080;
-    static final int SIZE = 256;
+    static final int PORT = 8088;
+    static final int SIZE = 512;
 
     public static void main(String[] args) {
         EventLoopGroup group = new NioEventLoopGroup();

@@ -1,0 +1,27 @@
+一、Netty and Java NIO API
+本章概要
+·Netty 结构体系
+·为什么我们需要非阻塞IO
+·阻塞与非阻塞IO
+·了解与JDK有关的NIO问题与Netty的解决办法
+这一章节主要了解下Netty,重点是一些Java的非阻塞IO（NIO）。
+1.1为什么学习Netty
+正如David Wheeler所说，“在计算机技术中所有的问题都可以通过其他间接方式解决”，Netty作为一个客户端-服务端框架，他就提供了这样的一个间接的方式。Netty简化了网络编程，但是你仍然可以可以使用底层的API因为他做了很多的高级抽象。
+1.1.1 并不是所有网络框架都一样
+关于Netty,高效和简洁并不意味着用Netty开发的应用程序存在性能和可维护性问题。这些经验来自使用例如FTP、SMTP、HTTP、Websocket、SPDY和各种二进制和基于文本的遗留协议，使得Netty的发明者在他们的设计中注入了非常好设计元素。因此，Netty具有易于开发、高效、稳定、灵活的特点。
+一些备受瞩目的公司和开源机构包括RedHat,Twitter,Infinspan,HonretQ,Vert.x,Finagle,Akka,Apache Cassandra,Elasticsearch等都在Netty。即使说这些公司的使用需求造就了Netty的特性也是无可厚非的。经过这几年，Netty已经变得广为人知，并且成为JVM使用最广泛的网络框架，Netty也广泛的用在各种开源闭源项目中。实际上，Netty是在2011年被授予了Duke's Choice Award奖。
+同年，Netty的发明者Trusin Lee离开了RedHat加入了Twitter.就在此时，Netty独立于任何公司以便简化对他的贡献。RedHat和Twitter都使用Netty，因此在当时这两家公司是对Netty最大的贡献者也不足为奇。Netty的个人共享者也在逐步增长，至今Netty仍旧活跃在各大社区和项目。
+1.1.2 Netty具有丰富的功能
+通过学习本章节，你将了解Netyy许多特性。下面我们来看看Netty体系结构
+Transport Services:Socket & Datagram,HTTP Tunnel,In-VM Pipe
+Protocol Support:HTTP & WebSocket,SSL·StartTLS,Google Protobuf,zlib/gzip,Large File Transfer,RTSP,Legacy Text·Binary Protocols with Unit Testability
+Core:Extensible Event Model,Universal Communication API,Zero-Copy-Capable Rich Byte Buffer
+除了广泛的传输和协议之外，Netty还提供各种各样的好处发展领域
+---------------------------------------------------------------------------------------------------------------------------
+|  发展领域  |  Netty 特性                                                                                                 |
+---------------------------------------------------------------------------------------------------------------------------
+|  Design    |  1.为各种阻塞、非阻塞的Socket提供了统一的API
+                2.灵活使用
+                3.简单高效的线程模型
+
+
